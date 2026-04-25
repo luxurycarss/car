@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Cars24x7 | Premium & Pre-Owned Vehicles</title>
+  <!-- Google Fonts & simple reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      /* BACKGROUND: WHITE & LIGHT GREEN COMBINATION */
+      background: linear-gradient(145deg, #ffffff 0%, #eef5e8 100%);
+      color: #1a2e1f;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / nav with light elegance */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0 20px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(80, 100, 70, 0.2);
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #1f3b1a 0%, #2d6a2b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      font-weight: 500;
+      font-size: 1rem;
+      background: none;
+      color: #4b6e3b;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+    }
+    .nav-links a {
+      color: #2c4b2a;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: #0f6b0a; }
+
+    /* hero section */
+    .hero {
+      padding: 70px 0 60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #568a3e;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero-content h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #1a4d14, #3c8c2e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #2f4d2d;
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+
+    /* FORM CARD - white card with light green accents */
+    .form-card {
+      background: #ffffff;
+      backdrop-filter: none;
+      border: 1px solid #cde2cd;
+      border-radius: 32px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 35px -12px rgba(50, 80, 30, 0.12);
+      transition: all 0.2s;
+    }
+    .form-card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1c3e18;
+    }
+    .form-card .form-sub {
+      color: #4b6e42;
+      margin-bottom: 28px;
+      border-left: 3px solid #6fbf4c;
+      padding-left: 12px;
+      font-weight: 450;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      color: #2a5325;
+    }
+    .input-group input, 
+    .input-group select {
+      width: 100%;
+      background: #fefef7;
+      border: 1px solid #cfe2cc;
+      padding: 14px 18px;
+      border-radius: 18px;
+      font-size: 1rem;
+      color: #1a2e1a;
+      outline: none;
+      transition: 0.2s;
+      font-family: inherit;
+    }
+    .input-group input:focus, 
+    .input-group select:focus {
+      border-color: #6fbf4c;
+      box-shadow: 0 0 0 3px rgba(111, 191, 76, 0.2);
+      background: white;
+    }
+    /* BUTTONS: fresh green gradient + hover effect */
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(95deg, #2b7a1b, #4caf2f);
+      color: white;
+      font-weight: 700;
+      padding: 14px;
+      border-radius: 40px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-family: inherit;
+      box-shadow: 0 4px 10px rgba(60, 130, 30, 0.2);
+      letter-spacing: 0.3px;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(95deg, #1f6312, #3f9a22);
+      transform: scale(0.98);
+      box-shadow: 0 6px 14px rgba(45, 110, 20, 0.25);
+    }
+    .privacy-note {
+      font-size: 0.7rem;
+      text-align: center;
+      margin-top: 20px;
+      color: #6f8f66;
+    }
+
+    /* models section with image styling */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 60px 0 16px 0;
+      letter-spacing: -0.02em;
+      color: #1a4015;
+    }
+    .section-sub {
+      color: #4b6a3f;
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .car-card {
+      background: #ffffffdd;
+      backdrop-filter: blur(0px);
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid #ddeede;
+      transition: 0.25s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+      display: flex;
+      flex-direction: column;
+    }
+    .car-card:hover {
+      border-color: #9fd18b;
+      box-shadow: 0 18px 30px -12px rgba(70, 120, 40, 0.15);
+      background: white;
+      transform: translateY(-3px);
+    }
+    .car-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      background: #eef3ea;
+      transition: transform 0.3s ease;
+    }
+    .car-card:hover .car-image {
+      transform: scale(1.02);
+    }
+    .car-badge {
+      display: inline-block;
+      background: #dff0db;
+      color: #2a6e1f;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      width: fit-content;
+    }
+    .car-card h4 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #1c4a16;
+    }
+    .car-desc {
+      color: #44633e;
+      margin: 12px 0;
+      line-height: 1.4;
+    }
+    .car-tag {
+      font-size: 0.8rem;
+      color: #639255;
+      border-top: 1px solid #e0f0db;
+      padding-top: 16px;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+    .faq {
+      margin: 70px 0 90px;
+    }
+    .faq h2 {
+      font-size: 2rem;
+      margin-bottom: 28px;
+      color: #215c19;
+    }
+    .faq-item {
+      margin-bottom: 28px;
+      border-bottom: 1px solid #cde2c5;
+      padding-bottom: 20px;
+    }
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #215a1a;
+    }
+    .faq-answer {
+      color: #476a3e;
+    }
+    footer {
+      padding: 32px 0 48px;
+      border-top: 1px solid #caddc5;
+      text-align: center;
+      color: #5f8254;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        flex-direction: column;
+      }
+      .hero-content h1 {
+        font-size: 2.6rem;
+      }
+      .form-card {
+        max-width: 100%;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .car-image {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- navbar with Cars24x7 logo -->
+    <div class="navbar">
+      <div class="logo">Cars24x7<span>  |  drive elevated</span></div>
+      <div class="nav-links">
+        <a href="#">Reserve</a>
+        <a href="#">Models</a>
+        <a href="#">Offers</a>
+        <a href="#">FAQ</a>
+      </div>
+    </div>
+
+    <!-- Hero section -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">CURATED COLLECTION</div>
+        <h1>Drive Excellence<br>Luxury & Beyond</h1>
+        <p>Discover premium new & pre-owned vehicles. Engineered for passion, crafted for excellence.</p>
+      </div>
+      <!-- FORM - exactly same structure, brand dropdown only with required brands -->
+      <div class="form-card">
+        <h3>Reserve Your Dream</h3>
+        <div class="form-sub">Fill the form — we’ll contact you with best offers.</div>
+        <form id="leadForm">
+          <div class="input-group">
+            <label>Full name</label>
+            <input type="text" id="fullName" placeholder="James Donovan" required>
+          </div>
+          <div class="input-group">
+            <label>Email address</label>
+            <input type="email" id="email" placeholder="hello@luxury.com" required>
+          </div>
+          <div class="input-group">
+            <label>Phone number</label>
+            <input type="tel" id="phone" placeholder="+1 234 567 890" required>
+          </div>
+          <div class="input-group">
+            <label>Preferred Brand</label>
+            <select id="brandSelect" required>
+              <option value="" disabled selected>Select brand</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+              <option value="BMW">BMW</option>
+              <option value="Audi">Audi</option>
+              <option value="Land Rover">Land Rover</option>
+              <option value="Volvo">Volvo</option>
+              <option value="Porsche">Porsche</option>
+              <option value="Lexus">Lexus</option>
+              <option value="Tata Motors">Tata Motors</option>
+              <option value="Mahindra">Mahindra</option>
+              <option value="Kia">Kia</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Honda">Honda</option>
+              <option value="Volkswagen">Volkswagen</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-submit">Request exclusive offer</button>
+          <div class="privacy-note">We respect your privacy. No spam, only curated deals.</div>
+        </form>
+        <div id="formFeedback" style="margin-top: 12px; font-size: 0.8rem; text-align: center; color: #2c7a1a;"></div>
+      </div>
+    </div>
+
+    <!-- ICONIC MODELS SECTION WITH CAR IMAGES (high-quality unsplash-like luxury car images) -->
+    <div>
+      <h2 class="section-title">Iconic Models</h2>
+      <div class="section-sub">Explore the latest high-performance lineup — new & certified pre-owned vehicles</div>
+      <div class="car-grid">
+        <div class="car-card">
+          <img class="car-image" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600&auto=format" alt="Luxury Electric GT" loading="lazy">
+          <div class="car-badge">NEW</div>
+          <h4>LUX GT EV</h4>
+          <div class="car-desc">Fully electric, ultra-fast charging, hyper screen & AI cockpit.</div>
+          <div class="car-tag">Electric Luxury • 0-100 in 3.9s</div>
+        </div>
+        <div class="car-card">
+          <img class="car-image" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&auto=format" alt="Executive Sedan" loading="lazy">
+          <div class="car-badge">PRE-OWNED</div>
+          <h4>EXECUTIVE SEDAN</h4>
+          <div class="car-desc">Dynamic design, advanced tech, sporty elegance with premium cabin.</div>
+          <div class="car-tag">Executive Sedan • Certified</div>
+        </div>
+        <div class="car-card">
+          <img class="car-image" src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&auto=format" alt="Off-road Icon SUV" loading="lazy">
+          <div class="car-badge">NEW</div>
+          <h4>OFF-ROAD ICON</h4>
+          <div class="car-desc">Legendary capability, luxury interior, all-terrain supremacy.</div>
+          <div class="car-tag">Off-road Legend • 4x4</div>
+        </div>
+        <div class="car-card">
+          <img class="car-image" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&auto=format" alt="Gran Coupe Electric" loading="lazy">
+          <div class="car-badge">NEW</div>
+          <h4>GRAN COUPE EV</h4>
+          <div class="car-desc">Stunning silhouette, futuristic interior, 0-100 in 4.1s.</div>
+          <div class="car-tag">Electric Performance</div>
+        </div>
+        <div class="car-card">
+          <img class="car-image" src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&auto=format" alt="Premium Luxury SUV" loading="lazy">
+          <div class="car-badge">PRE-OWNED</div>
+          <h4>PREMIUM SUV</h4>
+          <div class="car-desc">Spacious, Quattro drive, premium comfort & advanced safety.</div>
+          <div class="car-tag">Luxury SUV</div>
+        </div>
+        <div class="car-card">
+          <img class="car-image" src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=600&auto=format" alt="Estate Wagon Avant" loading="lazy">
+          <div class="car-badge">NEW</div>
+          <h4>AVANT WAGON</h4>
+          <div class="car-desc">Sleek lines, virtual cockpit, hybrid options & massive cargo.</div>
+          <div class="car-tag">Estate / Wagon</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Frequently Asked Questions -->
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question">What types of vehicles do you offer?</div>
+        <div class="faq-answer">We offer a curated selection of luxury, premium, and reliable vehicles — from Mercedes-Benz, BMW, Audi, Land Rover, Volvo, Porsche, Lexus to Tata Motors, Mahindra, Kia, Toyota, Honda, Volkswagen. Both new and pre-owned certified cars available.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How does the reservation process work?</div>
+        <div class="faq-answer">Simply fill out the form with your preferred brand and contact details. Our team will reach out with personalized offers, test drive options, and exclusive inventory updates.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Are pre-owned vehicles inspected?</div>
+        <div class="faq-answer">Absolutely. Every pre-owned vehicle undergoes a rigorous multi-point inspection and comes with warranty options for complete peace of mind.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do you offer financing or leasing?</div>
+        <div class="faq-answer">Yes, we partner with leading financial institutions to provide competitive rates, lease specials and flexible financing.</div>
+      </div>
+    </div>
+    <footer>
+      <p>© 2025 Cars24x7 — Precision, Passion, Performance. All trademarks belong to respective manufacturers.</p>
+    </footer>
+  </div>
+
+  <!-- form handling script: demo submission with light green feedback, brand dropdown strictly as requested -->
+  <script>
+    (function() {
+      const form = document.getElementById('leadForm');
+      const feedbackDiv = document.getElementById('formFeedback');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const brand = document.getElementById('brandSelect').value;
+        
+        if(!name || !email || !phone || !brand) {
+          feedbackDiv.style.color = "#c96f1e";
+          feedbackDiv.innerText = "⚠️ Please fill all fields and select a brand.";
+          setTimeout(() => { if(feedbackDiv) feedbackDiv.innerText = ""; }, 3000);
+          return;
+        }
+        
+        if(!email.includes('@') || !email.includes('.')) {
+          feedbackDiv.style.color = "#c96f1e";
+          feedbackDiv.innerText = "⚠️ Please enter a valid email address.";
+          setTimeout(() => { if(feedbackDiv) feedbackDiv.innerText = ""; }, 3000);
+          return;
+        }
+        
+        // success simulation
+        feedbackDiv.style.color = "#2a7a1a";
+        feedbackDiv.style.fontWeight = "500";
+        feedbackDiv.innerText = `✨ Thanks ${name}! Our Cars24x7 concierge will contact you regarding ${brand} models within 24h.`;
+        
+        setTimeout(() => {
+          if(feedbackDiv) feedbackDiv.innerText = "";
+        }, 5000);
+        
+        console.log(`Lead submitted: ${name}, ${email}, ${phone}, preferred: ${brand}`);
+      });
+      
+      // guarantee that the dropdown contains exactly the required brands (safety)
+      const brandSelect = document.getElementById('brandSelect');
+      if(brandSelect) {
+        const requiredBrandsList = [
+          "Mercedes-Benz", "BMW", "Audi", "Land Rover", "Volvo", "Porsche", 
+          "Lexus", "Tata Motors", "Mahindra", "Kia", "Toyota", "Honda", "Volkswagen"
+        ];
+        const existingOptionValues = Array.from(brandSelect.options).map(opt => opt.value).filter(v => v);
+        const missingBrands = requiredBrandsList.filter(b => !existingOptionValues.includes(b));
+        missingBrands.forEach(b => {
+          const opt = document.createElement('option');
+          opt.value = b;
+          opt.textContent = b;
+          brandSelect.appendChild(opt);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
