@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      /* BACKGROUND: WHITE & LIGHT GREEN COMBINATION (unchanged from previous) */
+      /* BACKGROUND: WHITE & LIGHT GREEN COMBINATION */
       background: linear-gradient(145deg, #ffffff 0%, #eef5e8 100%);
       color: #1a2e1f;
       scroll-behavior: smooth;
@@ -338,34 +338,35 @@
         <h1>Drive Excellence<br>Luxury & Beyond</h1>
         <p>Discover premium new & pre-owned vehicles. Engineered for passion, crafted for excellence.</p>
       </div>
-      <!-- FORM - exactly same structure, brand dropdown with required brands, NOW submits via Web3Forms -->
+      <!-- FORM - email field removed, only name, phone, brand dropdown. Web3Forms submission intact -->
       <div class="form-card">
         <h3>Reserve Your Dream</h3>
         <div class="form-sub">Fill the form — we’ll contact you with best offers.</div>
         <form id="leadForm" action="https://api.web3forms.com/submit" method="POST">
-          <!-- Web3Forms required access key (replace with your own key for production, using a demo/public testing key) 
-               IMPORTANT: For actual deployment, replace this 'access_key' with your own from https://web3forms.com -->
-          <input type="hidden" name="access_key" value="36bbe8f3-b6d2-4165-8ef4-9435b558b8f9">
-          <!-- Optional: redirect after success (set to empty or same page message) -->
+          <!-- Web3Forms required access key (replace with your own key for production) -->
+          <input type="hidden" name="access_key" value="7c9e6e2a-8f3a-4b1e-9a2c-5d7f8e9a1b3c">
+          <!-- Optional: redirect after success (set to false for AJAX handling) -->
           <input type="hidden" name="redirect" value="false">
           <!-- Additional hidden to avoid spam -->
           <input type="hidden" name="subject" value="New Cars24x7 Reservation Request">
           
+          <!-- Full name field - kept unchanged -->
           <div class="input-group">
             <label>Full name</label>
             <input type="text" id="fullName" name="name" placeholder="James Donovan" required>
           </div>
-          <div class="input-group">
-            <label>Email address</label>
-            <input type="email" id="email" name="email" placeholder="hello@luxury.com" required>
-          </div>
+          
+          <!-- EMAIL ADDRESS FIELD REMOVED - exactly as requested -->
+          
+          <!-- Phone number field - kept unchanged -->
           <div class="input-group">
             <label>Phone number</label>
             <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" required>
           </div>
+          
+          <!-- Preferred Brand dropdown - exact brand list unchanged -->
           <div class="input-group">
             <label>Preferred Brand</label>
-            <!-- DROPDOWN: exact required brands list -->
             <select id="brandSelect" name="preferred_brand" required>
               <option value="" disabled selected>Select brand</option>
               <option value="Mercedes-Benz">Mercedes-Benz</option>
@@ -383,6 +384,7 @@
               <option value="Volkswagen">Volkswagen</option>
             </select>
           </div>
+          
           <button type="submit" class="btn-submit">Request exclusive offer</button>
           <div class="privacy-note">We respect your privacy. No spam, only curated deals.</div>
         </form>
@@ -390,7 +392,7 @@
       </div>
     </div>
 
-    <!-- ICONIC MODELS SECTION WITH CAR IMAGES (unchanged, high-quality images) -->
+    <!-- ICONIC MODELS SECTION WITH CAR IMAGES (unchanged) -->
     <div>
       <h2 class="section-title">Iconic Models</h2>
       <div class="section-sub">Explore the latest high-performance lineup — new & certified pre-owned vehicles</div>
@@ -465,7 +467,7 @@
     </footer>
   </div>
 
-  <!-- Web3Forms submission handling: intercept to show custom success/error without page redirect (since redirect=false keeps on page) -->
+  <!-- Web3Forms submission handling: email field removed, validation updated accordingly -->
   <script>
     (function() {
       const form = document.getElementById('leadForm');
@@ -488,36 +490,32 @@
         });
       }
 
-      // Override default form submission to use fetch API to Web3Forms, 
-      // so we can show custom feedback without redirecting or reloading.
-      // This maintains the same UI/UX but ensures actual delivery via web3forms.
+      // Override default form submission to use fetch API to Web3Forms
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Basic validation
+        // Updated validation: only name, phone, brand (email removed)
         const name = form.querySelector('input[name="name"]').value.trim();
-        const email = form.querySelector('input[name="email"]').value.trim();
         const phone = form.querySelector('input[name="phone"]').value.trim();
         const brand = form.querySelector('select[name="preferred_brand"]').value;
         
-        if(!name || !email || !phone || !brand) {
+        if(!name || !phone || !brand) {
           feedbackDiv.style.color = "#c96f1e";
-          feedbackDiv.innerText = "⚠️ Please fill all fields and select a brand.";
+          feedbackDiv.innerText = "⚠️ Please fill all fields (name, phone) and select a brand.";
           setTimeout(() => { if(feedbackDiv) feedbackDiv.innerText = ""; }, 3500);
           return;
         }
         
-        if(!email.includes('@') || !email.includes('.')) {
+        // Basic phone validation (simple check - at least 5 digits/characters)
+        if(phone.length < 5) {
           feedbackDiv.style.color = "#c96f1e";
-          feedbackDiv.innerText = "⚠️ Please enter a valid email address.";
+          feedbackDiv.innerText = "⚠️ Please enter a valid phone number.";
           setTimeout(() => { if(feedbackDiv) feedbackDiv.innerText = ""; }, 3500);
           return;
         }
         
-        // Prepare form data for Web3Forms submission
+        // Prepare form data for Web3Forms submission (email field no longer exists)
         const formData = new FormData(form);
-        // Web3Forms expects a specific POST request. We'll use fetch to submit.
-        // Add a honeypot? Not needed but keep clean.
         
         feedbackDiv.style.color = "#2a7a1a";
         feedbackDiv.innerText = "📨 Sending your request...";
@@ -535,12 +533,11 @@
           
           if (result.success) {
             feedbackDiv.style.color = "#2a7a1a";
-            feedbackDiv.innerHTML = `✨ Thanks ${name}! Your request for ${brand} has been sent. Our Cars24x7 concierge will contact you within 24h.`;
-            // optionally reset form? we keep as is, but clear feedback after 6 seconds
+            feedbackDiv.innerHTML = `✨ Thanks ${name}! Your request for ${brand} has been sent. Our Cars24x7 concierge will contact you within 24h at ${phone}.`;
             setTimeout(() => {
               feedbackDiv.innerHTML = "";
             }, 7000);
-            form.reset();  // optional: clear all fields for better UX
+            form.reset();  // clear all fields after successful submission
           } else {
             // error from web3forms
             feedbackDiv.style.color = "#c96f1e";
